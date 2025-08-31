@@ -221,20 +221,21 @@ add_action('wp_enqueue_scripts', function (): void {
     $is_dev     = becute_is_vite_running($dev_server);
     $ver        = wp_get_theme()->get('Version');
 
+    wp_register_script_module(
+        'vite-client', // Unique handle for your module
+        $dev_server . '/@vite/client', // Path to your module file
+        [], // Dependencies (other modules or scripts)
+        null, // Version
+        true // In footer
+    );
+    wp_enqueue_script_module( 'vite-client' );
+
     if ($is_dev) {
         // Dev: HMR
-        wp_register_script_module(
-            'vite-client', // Unique handle for your module
-            $dev_server . '/@vite/client', // Path to your module file
-            [], // Dependencies (other modules or scripts)
-            null, // Version
-            true // In footer
-        );
-        wp_enqueue_script_module( 'vite-client' );
 
         wp_register_script_module(
             'theme-main', // Unique handle for your module
-            $dev_server . '/src/main.js', // Path to your module file
+            $dev_server . '/src/js/main.js', // Path to your module file
             [], // Dependencies (other modules or scripts)
             null, // Version
             true // In footer
@@ -245,23 +246,14 @@ add_action('wp_enqueue_scripts', function (): void {
         return;
     }
 
-    wp_register_script_module(
-        'vite-client', // Unique handle for your module
-        $dev_server . '/@vite/client', // Path to your module file
-        [], // Dependencies (other modules or scripts)
-        null, // Version
-        true // In footer
-    );
-    wp_enqueue_script_module( 'vite-client' );
-
     // Prod: manifest.json
-    $manifest_path = get_stylesheet_directory() . '/dist/manifest.json';
+    $manifest_path = get_stylesheet_directory() . '/dist/.vite/manifest.json';
     if (!file_exists($manifest_path)) {
         return;
     }
 
     $manifest = json_decode(file_get_contents($manifest_path), true);
-    $entry    = 'assets/src/main.js';
+    $entry    = 'assets/src/js/main.js';
 
     if (!isset($manifest[$entry])) {
         return;

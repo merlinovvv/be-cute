@@ -24,7 +24,7 @@ export default defineConfig({
         outDir: path.resolve(__dirname, "dist"),
         emptyOutDir: true,
         rollupOptions: {
-            input: path.resolve(__dirname, "assets/src/main.js"),
+            input: path.resolve(__dirname, "assets/src/js/main.js"),
         },
     },
 });

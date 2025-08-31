@@ -22,7 +22,7 @@
 
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
-<header class="mt-[37px]">
+<header class="mt-[37px] relative z-10">
     <div class="container">
         <div class="flex items-center justify-between">
             <?php the_custom_logo(); ?>

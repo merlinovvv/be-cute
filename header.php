@@ -25,7 +25,9 @@
 <header class="mt-[37px] relative z-10">
     <div class="container">
         <div class="flex items-center justify-between">
-            <?php the_custom_logo(); ?>
+            <div class="header-logo">
+                <?php the_custom_logo(); ?>
+            </div>
 
             <nav aria-label="Primary" class="main-navigation">
                 <?php

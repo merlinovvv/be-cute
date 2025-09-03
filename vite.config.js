@@ -3,7 +3,7 @@ import path from "path";
 
 export default defineConfig({
     root: "assets",                 // точка входа для dev
-    base: "/",                      // важен для корретных ссылок
+    base: "/",                      // важен для корректных ссылок
     server: {
         host: "localhost",
         port: 5173,

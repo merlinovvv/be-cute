@@ -17,6 +17,7 @@ $main = get_field('main_block');
 $services_block = get_field('services_block');
 $gallery_block = get_field('gallery_block');
 $reviews_block = get_field('reviews_block');
+$address_block = get_field('address_block');
 
 $book_page = get_field('book_page', 'option');
 $email = get_field('email', 'option');
@@ -27,7 +28,6 @@ $work_days = get_field('work_days', 'option');
 
 get_header();
 ?>
-
     <main id="content">
         <?php if ($main):
             $bg = $main['bg-image']['url'] ?? '';
@@ -35,7 +35,7 @@ get_header();
             $text_book_link = $main['text_book_link'] ?? '';
             $block_link = $main['block_link'] ?? '';
             ?>
-            <section id="main-block" class="overflow-x-hidden">
+            <section id="main" class="overflow-x-hidden">
                 <div class="container relative z-10">
                     <!-- Декоративный типографический фон -->
                     <article aria-hidden="true" class="pointer-events-none select-none inset-0 z-50">
@@ -57,7 +57,7 @@ get_header();
                     <?php endif; ?>
 
                     <?php if (!empty($block_link)) : ?>
-                        <a target="_blank" href="<?php echo esc_url($block_link['url']); ?>"
+                        <a href="<?php echo esc_url($block_link['url']); ?>"
                            class="btn mini absolute! left-[28.5%] bottom-[9%]">
                             <?php echo $block_link['title']; ?>
                             <i class="arrow"></i>
@@ -149,6 +149,7 @@ get_header();
             $services_types = $services_block['services_types'];
             ?>
             <section
+                    id="our-services"
                     class="flex xl:flex-row flex-col-reverse bg-secondary 3xl:min-h-[1020px] 2xl:min-h-[920px] xl:min-h-[840px] xl:h-screen">
                 <div id="servicesArea" class="services-area">
                 </div>
@@ -221,6 +222,7 @@ get_header();
             $gallery_slides = $gallery_block['gallery'];
             ?>
             <section
+                    id="gallery"
                     class="bg-dark md:px-10 px-4 pb-[60px] pt-5 z-50 md:min-h-[1119px] h-full flex flex-col relative md:gap-0 gap-8">
                 <h2 class="w-full text-white xl:!text-[12vw]/[100%] md:!text-[13vw]/[100%] text-[23vw]/[58%] flex items-baseline justify-between">
                     <span><?php echo esc_html($gallery_title_first) ?>
@@ -302,7 +304,7 @@ get_header();
             $block_link = $reviews_block['block_link'];
             $reviews = $reviews_block['reviews'];
             ?>
-            <section class="bg-secondary">
+            <section id="clients-say" class="bg-secondary py-[60px]">
                 <div class="container">
                     <div class="flex justify-between">
                         <article class="flex items-end flex-col text-primary">
@@ -384,8 +386,77 @@ get_header();
                         </div>
                     <?php endif; ?>
                 </div>
+            </section>
+        <?php endif; ?>
 
+        <?php if ($address_block):
+            $map_iframe_link = $address_block['map-iframe_link'];
+            $house_number = $address_block['address']['house_number'];
+            $street = $address_block['address']['street'];
+            $superheading = $address_block['superheading'];
+            $title = $address_block['title'];
+            $block_link = $address_block['block_link'];
+            $google_maps_link = $address_block['google_maps_link'];
 
+            ?>
+            <section id="find-us" class="py-[60px]">
+                <div class="container">
+                    <div class="flex justify-between">
+                        <div class="flex flex-col gap-3.5">
+                            <?php if ($map_iframe_link): ?>
+                                <iframe class="w-[976px] h-[790px] rounded-[30px]"
+                                        src="<?php echo esc_url($map_iframe_link); ?>"
+                                        style="border:0;"
+                                        allowfullscreen=""
+                                        loading="lazy"
+                                        referrerpolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            <?php endif; ?>
+                            <?php if ($address_block['address']): ?>
+                                <address
+                                        class="text-[67px]/[normal] text-white max-w-[736px] flex items-center gap-[34px] not-italic">
+                                    <span class="text-[200px] tracking-[-16px]"><?php echo esc_html($house_number); ?></span>
+                                    <?php echo esc_html($street); ?>
+                                </address>
+                            <?php endif; ?>
+                        </div>
+                        <div class="flex flex-col justify-between">
+                            <article class="max-w-[535px] relative">
+                                <p class="text-[25px] text-secondary ml-6"><?php echo esc_html($superheading); ?></p>
+                                <h2 class="text-[262.55px] text-right"><?php echo esc_html($title); ?></h2>
+                                <aside class="text-white max-w-max absolute bottom-6 left-6">
+                                    <?php if (count($work_time) === 2) : ?>
+                                        <p class="text-[30px]">
+                                            <time datetime="<?= esc_attr($work_time['from']) ?>"><?= esc_html($work_time['from']) ?></time>
+                                            -
+                                            <time datetime="<?= esc_attr($work_time['to']) ?>"><?= esc_html($work_time['to']) ?></time>
+                                        </p>
+                                    <?php endif; ?>
+
+                                    <?php if (!empty($work_days)) : ?>
+                                        <p class="mt-2 border-t border-[#EEEEF0] text-[15px] pt-[5px]"><?php echo esc_html($work_days); ?></p>
+                                    <?php endif; ?>
+                                </aside>
+                            </article>
+                            <div class="relative flex items-end">
+                                <?php if (!empty($block_link)) : ?>
+                                    <a class="btn mini left-[25px]" href="<?php echo esc_url($block_link['url']); ?>">
+                                        <?php echo esc_html($block_link['title']); ?>
+                                        <i class="arrow"></i>
+                                    </a>
+                                <?php endif; ?>
+                                <?php if (!empty($google_maps_link)) : ?>
+                                    <a target="_blank"
+                                       href="<?php echo esc_url($google_maps_link['url']); ?>"
+                                       class="btn">
+                                        <?php echo esc_html($google_maps_link['title']); ?>
+                                        <i class="arrow"></i>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </section>
         <?php endif; ?>
     </main>

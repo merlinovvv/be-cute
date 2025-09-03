@@ -1,8 +1,8 @@
 import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs';
 
-const swiper = new Swiper('.swiper-reviews', {
+new Swiper('.swiper-reviews', {
     spaceBetween: '33px',
-    slidesPerView: 4,
+    slidesPerView: 5,
     navigation: {
         nextEl: '.reviews-button-next',
         prevEl: '.reviews-button-prev',

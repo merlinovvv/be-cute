@@ -50,6 +50,7 @@ function becute_setup() {
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__( 'Primary', 'becute' ),
+			'menu-2' => esc_html__( 'Footer', 'becute' ),
 		)
 	);
 
@@ -149,6 +150,9 @@ function becute_get_language_switcher() {
 function becute_add_menu_classes( $classes, $item, $args ) {
     if ( $args->theme_location === 'menu-1' ) {
         $classes[] = 'menu-link';
+    }
+    if ( $args->theme_location === 'menu-2' ) {
+        $classes[] = 'footer-menu-link';
     }
 
     return $classes;

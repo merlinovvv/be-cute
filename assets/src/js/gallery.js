@@ -3,8 +3,7 @@ import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs
 // Конфигурация количества картинок на слайд для разных размеров экрана
 const SLIDE_CONFIG = {
     desktop: { imagesPerSlide: 5, breakpoint: 1280 },
-    tablet: { imagesPerSlide: 4, breakpoint: 780 },
-    mobile: { imagesPerSlide: 3, breakpoint: 550 }
+    tablet: { imagesPerSlide: 3, breakpoint: 780 },
 };
 
 let currentConfig = null;
@@ -18,10 +17,8 @@ function getCurrentConfig() {
         return SLIDE_CONFIG.desktop;
     } else if (width >= SLIDE_CONFIG.tablet.breakpoint) {
         return SLIDE_CONFIG.tablet;
-    } else if (width >= SLIDE_CONFIG.mobile.breakpoint) {
-        return SLIDE_CONFIG.mobile;
     } else {
-        return SLIDE_CONFIG.mobile;
+        return SLIDE_CONFIG.tablet;
     }
 }
 
@@ -90,6 +87,7 @@ function redistributeImages() {
 
         // Инициализируем Swiper заново
         swiper = new Swiper('.swiper-gallery', {
+            spaceBetween: '33px',
             navigation: {
                 nextEl: '.gallery-button-next',
                 prevEl: '.gallery-button-prev',

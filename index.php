@@ -16,6 +16,7 @@
 $main = get_field('main_block');
 $services_block = get_field('services_block');
 $gallery_block = get_field('gallery_block');
+$products_block = get_field('products_block');
 $reviews_block = get_field('reviews_block');
 $address_block = get_field('address_block');
 
@@ -143,7 +144,7 @@ get_header();
                                                 <div itemprop="description" class="small-text 2xl:max-w-[207px]">
                                                     <?php echo $service['desc']; ?>
                                                 </div>
-                                                <div class="flex 2xl:flex-col mobile:flex-row flex-col justify-between gap-[7px] 2xl:items-end mobile:items-center items-start w-full 2xl:flex-nowrap flex-wrap">
+                                                <div class="flex 2xl:flex-col mobile:flex-row flex-col justify-between gap-[7px] 2xl:items-end mobile:items-center items-start w-max 2xl:flex-nowrap flex-wrap">
                                                     <div class="3xl:text-[45px]/[100%] 2xl:text-[40px]/[100%] mobile:text-[30px]/[100%] text-[17px]/[100%] font-medium lowercase text-primary text-nowrap"
                                                          itemprop="offers" itemscope
                                                          itemtype="https://schema.org/Offer">
@@ -151,10 +152,12 @@ get_header();
                                                         <meta itemprop="priceCurrency"
                                                               content="<?php echo $service['currency']; ?>">
                                                     </div>
-                                                    <a class="service-btn text-white!" rel="noopener noreferrer" target="_blank"
+                                                    <a class="service-btn text-white!" rel="noopener noreferrer"
+                                                       target="_blank"
                                                        href="<?php echo esc_url($book_page['url']); ?>">
                                                         <?php echo esc_html($book_page['title']); ?>
-                                                        <svg aria-hidden="true" class="mobile:w-auto w-[12px]" width="23" height="23"
+                                                        <svg aria-hidden="true" class="mobile:w-auto w-[12px]"
+                                                             width="23" height="23"
                                                              viewBox="0 0 23 23" fill="none"
                                                              xmlns="http://www.w3.org/2000/svg">
                                                             <mask id="path-1-inside-1_32_2201" fill="white">
@@ -271,7 +274,8 @@ get_header();
                                         $url = esc_url($image['url']);
                                         $alt = esc_url($image['alt']);
                                         ?>
-                                        <figure class="slide-image slide-image-<?php echo $num; ?>" style="background-image: url('<?php echo $url; ?>')"></figure>
+                                        <figure class="slide-image slide-image-<?php echo $num; ?>"
+                                                style="background-image: url('<?php echo $url; ?>')"></figure>
                                     <?php endforeach; ?>
 
                                     <div class="slide-image slide-buttons">
@@ -286,8 +290,10 @@ get_header();
                                         <?php endif; ?>
 
                                         <div class="flex gap-5 items-center slide-buttons-container">
-                                            <button aria-label="Preview slide" class="gallery-button-prev disabled:bg-white/10 -rotate-90 rounded-full bg-white w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
-                                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            <button aria-label="Preview slide"
+                                                    class="gallery-button-prev disabled:bg-white/10 -rotate-90 rounded-full bg-white w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
+                                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"
+                                                     fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <mask id="path-1-inside-1_32_2239" fill="white">
                                                         <path d="M7.21566 12.1219C7.64884 12.5551 8.35116 12.5551 8.78434 12.1219L14.3728 6.53345L8.78434 0.944997C8.35116 0.511815 7.64884 0.511816 7.21566 0.944997L1.6272 6.53345L7.21566 12.1219Z"/>
@@ -298,8 +304,10 @@ get_header();
                                                 </svg>
                                             </button>
                                             <span class="h-[73.92px] w-[1px] bg-white -rotate-35"></span>
-                                            <button aria-label="Next slide" class="gallery-button-next disabled:bg-white/10 -rotate-90 rounded-full bg-white w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
-                                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                            <button aria-label="Next slide"
+                                                    class="gallery-button-next disabled:bg-white/10 -rotate-90 rounded-full bg-white w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
+                                                <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16"
+                                                     fill="none"
                                                      xmlns="http://www.w3.org/2000/svg">
                                                     <mask id="path-1-inside-1_32_2234" fill="white">
                                                         <path d="M7.21566 3.87809C7.64884 3.44491 8.35116 3.44491 8.78434 3.87809L14.3728 9.46655L8.78434 15.055C8.35116 15.4882 7.64884 15.4882 7.21566 15.055L1.6272 9.46655L7.21566 3.87809Z"/>
@@ -316,6 +324,48 @@ get_header();
                         </div>
                     </div>
                 <?php endif; ?>
+            </section>
+        <?php endif; ?>
+
+        <?php if ($products_block):
+            $supertitle = $products_block['supertitle'];
+            $title = $products_block['title'];
+            $subtitle = $products_block['subtitle'];
+            $products = $products_block['products'];
+            ?>
+            <section id="products" class="bg-secondary py-10">
+                <div class="container">
+                    <div class="flex flex-col gap-5 items-center">
+                        <?php if ($supertitle): ?>
+                            <span class="small-text"><?php echo esc_html($supertitle); ?></span>
+                        <?php endif; ?>
+                        <?php if ($title): ?>
+                            <h2 class="text-primary"><?php echo esc_html($title); ?></h2>
+                        <?php endif; ?>
+                        <?php if ($subtitle): ?>
+                            <span class="small-text"><?php echo esc_html($subtitle); ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <div class="grid grid-cols-[repeat(3,minmax(414px,1fr))] gap-9 pt-10 border-t border-primary mt-10 max-w-max mx-auto">
+                        <?php if (!empty($products)): ?>
+                            <?php foreach ($products as $product): ?>
+                                <div class="bg-lite-white p-5 rounded-[30px] flex flex-col gap-5">
+                                    <?php if (!empty($product['image'])): ?>
+                                        <img class="rounded-[30px] w-full h-[383px] object-center object-cover"
+                                             src="<?php echo esc_url($product['image']['url']); ?>"
+                                             alt="<?php echo esc_attr($product['name']); ?>">
+                                    <?php else: ?>
+                                        <div class="rounded-[30px] w-full h-[383px] bg-[#E1E1E1]"></div>
+                                    <?php endif; ?>
+                                    <div class="text-center max-w-[280px] mx-auto">
+                                        <h5 class="text-primary text-[25px]"><?php echo esc_html($product['name']); ?></h5>
+                                        <p class="small-text"><?php echo esc_html($product['desc']); ?></p>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </section>
         <?php endif; ?>
 
@@ -352,7 +402,8 @@ get_header();
                                 </a>
                             <?php endif; ?>
                             <?php if (!empty($book_page)) : ?>
-                                <a rel="noopener noreferrer" target="_blank" href="<?php echo esc_url($book_page['url']); ?>" class="btn">
+                                <a rel="noopener noreferrer" target="_blank"
+                                   href="<?php echo esc_url($book_page['url']); ?>" class="btn">
                                     <?php echo esc_html($book_page['title']); ?>
                                     <i class="arrow"></i>
                                 </a>
@@ -364,7 +415,8 @@ get_header();
                     <div class="swiper swiper-reviews md:px-[33px]! px-5! mt-[27px]">
                         <div class="w-full md:flex items-end flex-col hidden">
                             <div class="flex gap-5 items-center mb-[37px] xl:mr-[267px] mx-auto">
-                                <button aria-label="Preview review" class="reviews-button-prev disabled:opacity-50 -rotate-90 rounded-full border-text-secondary border-1 w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
+                                <button aria-label="Preview review"
+                                        class="reviews-button-prev disabled:opacity-50 -rotate-90 rounded-full borderdark-gray border-1 w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
                                     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <mask id="path-1-inside-1_32_2239" fill="white">
@@ -376,7 +428,8 @@ get_header();
                                     </svg>
                                 </button>
                                 <span class="reviews-swiper-pagination"></span>
-                                <button aria-label="Next review" class="reviews-button-next disabled:opacity-50 -rotate-90 rounded-full border-text-secondary border-1 w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
+                                <button aria-label="Next review"
+                                        class="reviews-button-next disabled:opacity-50 -rotate-90 rounded-full borderdark-gray border-1 w-[64px] h-[64px] flex flex-col items-center justify-center cursor-pointer hover:bg-white/60 transition duration-200">
                                     <svg aria-hidden="true" width="16" height="16" viewBox="0 0 16 16" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <mask id="path-1-inside-1_32_2234" fill="white">
@@ -392,13 +445,17 @@ get_header();
 
                         <div class="swiper-wrapper">
                             <?php foreach ($reviews as $review) : ?>
-                                <div itemscope itemtype="https://schema.org/Review" class="swiper-slide bg-[#EEEEF0] md:rounded-[30px] rounded-[21px] md:p-[30px] p-[16px] !h-auto lg:max-w-auto max-w-[357px]">
+                                <div itemscope itemtype="https://schema.org/Review"
+                                     class="swiper-slide bg-[#EEEEF0] md:rounded-[30px] rounded-[21px] md:p-[30px] p-[16px] !h-auto lg:max-w-auto max-w-[357px]">
                                     <div class="flex flex-col md:gap-[30px] gap-[15px]">
-                                        <div class="flex items-center gap-2.5" itemprop="author" itemscope itemtype="https://schema.org/Person">
-                                            <img itemprop="image" class="md:w-[51px] w-[28px] md:h-[51px] h-[28px] rounded-full object-center object-cover"
+                                        <div class="flex items-center gap-2.5" itemprop="author" itemscope
+                                             itemtype="https://schema.org/Person">
+                                            <img itemprop="image"
+                                                 class="md:w-[51px] w-[28px] md:h-[51px] h-[28px] rounded-full object-center object-cover"
                                                  src="<?php echo esc_url($review['avatar']['sizes']['thumbnail']); ?>"
                                                  alt="<?php echo esc_attr($review['name']); ?>">
-                                            <h4 itemprop="name" class="md:text-[25px] text-[12px] font-medium"><?php echo esc_html($review['name']); ?></h4>
+                                            <h4 itemprop="name"
+                                                class="md:text-[25px] text-[12px] font-medium"><?php echo esc_html($review['name']); ?></h4>
                                         </div>
                                         <div class="h-[1px] w-full bg-primary"></div>
                                         <blockquote itemprop="reviewBody" class="small-text">
@@ -419,7 +476,8 @@ get_header();
                         </a>
                     <?php endif; ?>
                     <?php if (!empty($book_page)) : ?>
-                        <a rel="noopener noreferrer" target="_blank" href="<?php echo esc_url($book_page['url']); ?>" class="btn">
+                        <a rel="noopener noreferrer" target="_blank" href="<?php echo esc_url($book_page['url']); ?>"
+                           class="btn">
                             <?php echo esc_html($book_page['title']); ?>
                             <i class="arrow"></i>
                         </a>
@@ -454,8 +512,9 @@ get_header();
                             <?php endif; ?>
                             <?php if ($address_block['address']): ?>
                                 <address itemscope itemtype="https://schema.org/PostalAddress"
-                                        class="xl:text-[67px]/[normal] md:text-[42px]/[normal] text-[12px]/[normal] text-white xl:max-w-[736px] md:max-w-[485px] max-w-[141px] flex items-center md:gap-[34px] gap-[3px] not-italic">
-                                    <span itemprop="streetNumber" class="xl:text-[200px] md:text-[150px] text-[45px] md:tracking-[-16px] tracking-[-2px]"><?php echo esc_html($house_number); ?></span>
+                                         class="xl:text-[67px]/[normal] md:text-[42px]/[normal] text-[12px]/[normal] text-white xl:max-w-[736px] md:max-w-[485px] max-w-[141px] flex items-center md:gap-[34px] gap-[3px] not-italic">
+                                    <span itemprop="streetNumber"
+                                          class="xl:text-[200px] md:text-[150px] text-[45px] md:tracking-[-16px] tracking-[-2px]"><?php echo esc_html($house_number); ?></span>
                                     <span itemprop="streetAddress"><?php echo esc_html($street); ?></span>
                                 </address>
                             <?php endif; ?>
@@ -471,9 +530,11 @@ get_header();
                                 <aside class="text-white max-w-max">
                                     <?php if (count($work_time) === 2) : ?>
                                         <p class="md:text-[30px] text-xl">
-                                            <time itemprop="openingHours" datetime="<?= esc_attr($work_time['from']) ?>"><?= esc_html($work_time['from']) ?></time>
+                                            <time itemprop="openingHours"
+                                                  datetime="<?= esc_attr($work_time['from']) ?>"><?= esc_html($work_time['from']) ?></time>
                                             -
-                                            <time itemprop="closingHours" datetime="<?= esc_attr($work_time['to']) ?>"><?= esc_html($work_time['to']) ?></time>
+                                            <time itemprop="closingHours"
+                                                  datetime="<?= esc_attr($work_time['to']) ?>"><?= esc_html($work_time['to']) ?></time>
                                         </p>
                                     <?php endif; ?>
 

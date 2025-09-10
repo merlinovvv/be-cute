@@ -333,41 +333,47 @@ get_header();
             $subtitle = $products_block['subtitle'];
             $products = $products_block['products'];
             ?>
-            <section id="products" class="bg-secondary py-10">
+            <section id="products" class="bg-secondary py-10" aria-labelledby="products-title">
                 <div class="container">
-                    <div class="flex flex-col gap-5 items-center">
+                    <div class="flex flex-col gap-5 items-center text-center">
                         <?php if ($supertitle): ?>
-                            <span class="small-text"><?php echo esc_html($supertitle); ?></span>
+                            <p class="small-text text-primary font-medium"><?php echo esc_html($supertitle); ?></p>
                         <?php endif; ?>
                         <?php if ($title): ?>
-                            <h2 class="text-primary"><?php echo esc_html($title); ?></h2>
+                            <h2 id="products-title" class="text-primary"><?php echo esc_html($title); ?></h2>
                         <?php endif; ?>
                         <?php if ($subtitle): ?>
-                            <span class="small-text"><?php echo esc_html($subtitle); ?></span>
+                            <p class="small-text"><?php echo esc_html($subtitle); ?></p>
                         <?php endif; ?>
                     </div>
-                    <div class="grid grid-cols-[repeat(3,minmax(414px,1fr))] gap-9 pt-10 border-t border-primary mt-10 max-w-max mx-auto">
-                        <?php if (!empty($products)): ?>
+
+                    <?php if (!empty($products)): ?>
+                        <ul class="grid grid-cols-[repeat(3,minmax(414px,1fr))] gap-9 pt-10 border-t border-primary mt-10 max-w-max mx-auto">
                             <?php foreach ($products as $product): ?>
-                                <div class="bg-lite-white p-5 rounded-[30px] flex flex-col gap-5">
-                                    <?php if (!empty($product['image'])): ?>
-                                        <img class="rounded-[30px] w-full h-[383px] object-center object-cover"
-                                             src="<?php echo esc_url($product['image']['url']); ?>"
-                                             alt="<?php echo esc_attr($product['name']); ?>">
-                                    <?php else: ?>
-                                        <div class="rounded-[30px] w-full h-[383px] bg-[#E1E1E1]"></div>
-                                    <?php endif; ?>
-                                    <div class="text-center max-w-[280px] mx-auto">
-                                        <h5 class="text-primary text-[25px]"><?php echo esc_html($product['name']); ?></h5>
-                                        <p class="small-text"><?php echo esc_html($product['desc']); ?></p>
-                                    </div>
-                                </div>
+                                <li class="h-auto">
+                                    <article class="bg-lite-white p-5 rounded-[30px] flex flex-col gap-5 h-full" itemscope itemtype="https://schema.org/Product">
+                                        <?php if (!empty($product['image'])): ?>
+                                            <img class="rounded-[30px] w-full h-[383px] object-center object-cover"
+                                                 src="<?php echo esc_url($product['image']['url']); ?>"
+                                                 alt="Buy <?php echo esc_attr($product['name']); ?>"
+                                                 itemprop="image">
+                                        <?php else: ?>
+                                            <div class="rounded-[30px] w-full h-[383px] bg-[#E1E1E1]"></div>
+                                        <?php endif; ?>
+
+                                        <div class="text-center max-w-[280px] mx-auto">
+                                            <h5 class="text-primary text-[25px]" itemprop="name"><?php echo esc_html($product['name']); ?></h5>
+                                            <p class="small-text" itemprop="description"><?php echo esc_html($product['desc']); ?></p>
+                                        </div>
+                                    </article>
+                                </li>
                             <?php endforeach; ?>
-                        <?php endif; ?>
-                    </div>
+                        </ul>
+                    <?php endif; ?>
                 </div>
             </section>
         <?php endif; ?>
+
 
         <?php if ($reviews_block):
             $title = $reviews_block['title'];

@@ -9,8 +9,8 @@
     --color-primary: #E492A1;
     --color-secondary: #EACFD4;
     --color-background: #2A2A2A;
-    --color-text-secondary: #6B6A70;
-    --color-dark-gray: #404040;
+    --color-dark-gray: #6B6A70;
+    --color-lite-white: #EEEEF0;
 
     --default-btn-size: clamp(110px, 48rem, 15.95vw) ;
     --mini-btn-size: clamp(82px, 48rem, 10.94vw);
@@ -197,7 +197,7 @@
             padding: 25px;
             background: transparent;
             font-size: 20px;
-            color: var(--color-text-secondary);
+            color: var(--color-dark-gray);
             width: var(--mini-btn-size);
             height: var(--mini-btn-size);
 
@@ -210,12 +210,12 @@
             .arrow {
                 width: 18px;
                 height: 18px;
-                border-top: 1px solid var(--color-text-secondary);
-                border-right: 1px solid var(--color-text-secondary);
+                border-top: 1px solid var(--color-dark-gray);
+                border-right: 1px solid var(--color-dark-gray);
 
                 &:before {
                     width: 15px;
-                    background: var(--color-text-secondary);
+                    background: var(--color-dark-gray);
                     height: 1px;
                 }
             }

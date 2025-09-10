@@ -9,7 +9,7 @@
 
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.0');
+    define('_S_VERSION', '1.0.1');
 }
 
 /**
@@ -104,6 +104,11 @@ function becute_setup()
 }
 
 add_action('after_setup_theme', 'becute_setup');
+
+function becute_acf_json_save_point( $path ) {
+    return get_stylesheet_directory() . '/acf-json';
+}
+add_filter( 'acf/settings/save_json', 'becute_acf_json_save_point' );
 
 /**
  * Получаем переключатель языков
@@ -254,39 +259,38 @@ add_action('wp_enqueue_scripts', function (): void {
     $is_dev = becute_is_vite_running($dev_server);
     $ver = wp_get_theme()->get('Version');
 
-    wp_register_script_module(
-        'vite-client', // Unique handle for your module
-        $dev_server . '/@vite/client', // Path to your module file
-        [], // Dependencies (other modules or scripts)
-        null, // Version
-        true // In footer
-    );
-    wp_enqueue_script_module('vite-client');
-
     if ($is_dev) {
-        // Dev: HMR
-
+        // HMR client
         wp_register_script_module(
-            'theme-main', // Unique handle for your module
-            $dev_server . '/src/js/main.js', // Path to your module file
-            [], // Dependencies (other modules or scripts)
-            null, // Version
-            true // In footer
+            'vite-client',
+            $dev_server . '/@vite/client',
+            [],
+            null,
+            true
+        );
+        wp_enqueue_script_module('vite-client');
+
+        // Main JS
+        wp_register_script_module(
+            'theme-main',
+            $dev_server . '/src/js/main.js',
+            [],
+            null,
+            true
         );
         wp_enqueue_script_module('theme-main');
-
-        // CSS в dev придёт через HMR из main.js
         return;
     }
 
-    // Prod: manifest.json
+    // --- Prod: manifest.json ---
     $manifest_path = get_stylesheet_directory() . '/dist/.vite/manifest.json';
     if (!file_exists($manifest_path)) {
+        error_log( 'Vite manifest file not found: ' . $manifest_path );
         return;
     }
 
     $manifest = json_decode(file_get_contents($manifest_path), true);
-    $entry = 'assets/src/js/main.js';
+    $entry = 'src/js/main.js';
 
     if (!isset($manifest[$entry])) {
         return;
@@ -294,30 +298,22 @@ add_action('wp_enqueue_scripts', function (): void {
 
     $base = get_stylesheet_directory_uri() . '/dist/';
 
-    // CSS (может быть массивом)
     if (!empty($manifest[$entry]['css'])) {
         foreach ($manifest[$entry]['css'] as $css) {
             wp_enqueue_style('theme-style', $base . $css, [], $ver);
         }
     }
 
-    // JS как ES-модуль
     $file = $manifest[$entry]['file'] ?? null;
     if ($file) {
-        wp_enqueue_script('theme-main', $base . $file, [], $ver, true);
-        wp_script_add_data('theme-main', 'type', 'module'); // ⬅️ ВАЖНО
-    }
-
-    // (Необязательно) modulepreload для импортов Vite — небольшой буст производительности
-    if (!empty($manifest[$entry]['imports'])) {
-        add_action('wp_head', function () use ($manifest, $base, $entry) {
-            foreach ($manifest[$entry]['imports'] as $import) {
-                $import_file = $manifest[$import]['file'] ?? null;
-                if ($import_file) {
-                    echo '<link rel="modulepreload" href="' . esc_url($base . $import_file) . '">' . "\n";
-                }
-            }
-        }, 1);
+        wp_register_script_module(
+            'main-module-handle',
+            $base . $file,
+            array(),
+            $ver,
+            true
+        );
+        wp_enqueue_script_module( 'main-module-handle' );
     }
 }, 20);
 

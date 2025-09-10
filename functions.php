@@ -105,6 +105,11 @@ function becute_setup()
 
 add_action('after_setup_theme', 'becute_setup');
 
+function becute_acf_json_save_point( $path ) {
+    return get_stylesheet_directory() . '/acf-json';
+}
+add_filter( 'acf/settings/save_json', 'becute_acf_json_save_point' );
+
 /**
  * Получаем переключатель языков
  *

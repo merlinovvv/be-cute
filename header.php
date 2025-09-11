@@ -44,7 +44,7 @@ $tel_icon = '<svg aria-hidden="true" width="12" height="13" viewBox="0 0 12 13" 
     <?php wp_head(); ?>
 </head>
 
-<body class="bg-no-repeat bg-right-top"
+<body class="bg-no-repeat sm:bg-right-top bg-[60%_top] sm:bg-auto bg-size-[239%]"
       style="background-image: url('<?php echo esc_url($bg) ?>')" <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 <header class="md:mt-[37px] mt-[6px] relative z-20">

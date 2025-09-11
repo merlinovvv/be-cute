@@ -104,7 +104,7 @@ if ($footer):
                         </div>
                     </div>
                     <div class="outline outline-secondary border-[9px] border-background lg:max-w-[421px] w-full md:rounded-[25px] rounded-[15px] lg:py-[98px] md:p-10 px-[15px] py-[10px] text-white relative">
-                        <div class="flex lg:max-w-[128px] max-w-max lg:flex-col flex-row gap-6 mx-auto z-20 relative lg:items-start items-center">
+                        <div class="flex lg:max-w-[195px] max-w-max lg:flex-col flex-row gap-6 mx-auto z-20 relative lg:items-start items-center">
                             <h4 class="md:text-[35px]/[normal] text-[20px]/[normal] font-medium lg:max-w-max md:max-w-[182px] max-w-[102px]"><?php echo esc_html($work_time_title); ?></h4>
                             <aside class="text-white">
                                 <?php if (count($work_time) === 2) : ?>

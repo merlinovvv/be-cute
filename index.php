@@ -122,61 +122,63 @@ get_header();
             ?>
             <section
                     id="our-services"
-                    class="bg-secondary 3xl:min-h-[1120px] 2xl:min-h-[920px] xl:min-h-[840px] xl:h-screen z-50 relative">
+                    class="bg-secondary z-50 relative">
                 <div class="container flex xl:flex-row flex-col-reverse h-full">
-                    <div id="servicesArea" class="services-area md:pr-5 xl:py-[60px] pb-[60px]">
-                        <?php if (!empty($services_types)) : ?>
-                            <?php foreach ($services_types as $service_type) : ?>
-                                <?php foreach ($service_type["services"] as $service) : ?>
-                                    <article itemscope itemtype="https://schema.org/Service"
-                                             data-service-type="<?php echo esc_attr($service_type['type']); ?>"
-                                             class="flex xl:gap-2.5 w-full items-center service-item">
-                                        <div aria-label="<?php echo esc_attr($service['name']); ?>"
-                                             style="background-image: url('<?php echo esc_url($service['image']['url']); ?>');"
-                                             class="bg-center bg-cover mobile:w-[291px] w-[116px] h-full mobile:border-[10px] border-[4px] border-white mobile:rounded-[30px] rounded-[12.78px] flex-none"></div>
-                                        <img class="sr-only" src="<?php echo esc_url($service['image']['url']); ?>"
-                                             alt="<?php echo esc_attr($service['name']); ?>">
-                                        <div class="h-full border-y border-r border-white mobile:pl-[10px] pl-[7px] mobile:py-[20px] py-[10px] mobile:pr-[20px] pr-[5px] rounded-r-[30px] flex flex-col 2xl:gap-[42px] mobile:gap-5 gap-[9px] w-full">
-                                            <h3 itemprop="name">
-                                                <?php echo esc_html($service['name']); ?>
-                                            </h3>
-                                            <div class="flex justify-between 2xl:items-end items-start 2xl:flex-row flex-col 2xl:gap-0 mobile:gap-5 gap-[15px]">
-                                                <div itemprop="description" class="small-text 2xl:max-w-[207px]">
-                                                    <?php echo $service['desc']; ?>
-                                                </div>
-                                                <div class="flex 2xl:flex-col mobile:flex-row flex-col justify-between gap-[7px] 2xl:items-end mobile:items-center items-start w-max 2xl:flex-nowrap flex-wrap">
-                                                    <div class="3xl:text-[45px]/[100%] 2xl:text-[40px]/[100%] mobile:text-[30px]/[100%] text-[17px]/[100%] font-medium lowercase text-primary text-nowrap"
-                                                         itemprop="offers" itemscope
-                                                         itemtype="https://schema.org/Offer">
-                                                        <span itemprop="price"><?php echo $service['price']; ?><?php echo $service['currency']; ?></span>
-                                                        <meta itemprop="priceCurrency"
-                                                              content="<?php echo $service['currency']; ?>">
+                    <div class="w-full relative">
+                        <div id="servicesArea" class="services-area ">
+                            <?php if (!empty($services_types)) : ?>
+                                <?php foreach ($services_types as $service_type) : ?>
+                                    <?php foreach ($service_type["services"] as $service) : ?>
+                                        <article itemscope itemtype="https://schema.org/Service"
+                                                 data-service-type="<?php echo esc_attr($service_type['type']); ?>"
+                                                 class="flex xl:gap-2.5 w-full items-center service-item">
+                                            <div aria-label="<?php echo esc_attr($service['name']); ?>"
+                                                 style="background-image: url('<?php echo esc_url($service['image']['url']); ?>');"
+                                                 class="bg-center bg-cover mobile:w-[291px] w-[116px] h-full mobile:border-[10px] border-[4px] border-white mobile:rounded-[30px] rounded-[12.78px] flex-none"></div>
+                                            <img class="sr-only" src="<?php echo esc_url($service['image']['url']); ?>"
+                                                 alt="<?php echo esc_attr($service['name']); ?>">
+                                            <div class="h-full border-y border-r border-white mobile:pl-[10px] pl-[7px] mobile:py-[20px] py-[10px] mobile:pr-[20px] pr-[5px] rounded-r-[30px] flex flex-col 2xl:gap-[42px] mobile:gap-5 gap-[9px] w-full">
+                                                <h3 itemprop="name">
+                                                    <?php echo esc_html($service['name']); ?>
+                                                </h3>
+                                                <div class="flex justify-between 2xl:items-end items-start 2xl:flex-row flex-col 2xl:gap-0 mobile:gap-5 gap-[15px]">
+                                                    <div itemprop="description" class="small-text 2xl:max-w-[207px]">
+                                                        <?php echo $service['desc']; ?>
                                                     </div>
-                                                    <a class="service-btn text-white!" rel="noopener noreferrer"
-                                                       target="_blank"
-                                                       href="<?php echo esc_url($book_page['url']); ?>">
-                                                        <?php echo esc_html($book_page['title']); ?>
-                                                        <svg aria-hidden="true" class="mobile:w-auto w-[12px]"
-                                                             width="23" height="23"
-                                                             viewBox="0 0 23 23" fill="none"
-                                                             xmlns="http://www.w3.org/2000/svg">
-                                                            <mask id="path-1-inside-1_32_2201" fill="white">
-                                                                <path d="M5.53846 12.4335C4.91963 11.8147 4.91963 10.8113 5.53846 10.1925L13.522 2.20899L21.5055 10.1925C22.1243 10.8113 22.1243 11.8146 21.5055 12.4335L13.522 20.417L5.53846 12.4335Z"/>
-                                                            </mask>
-                                                            <path d="M4.41797 11.313L13.522 2.20899L4.41797 11.313ZM22.2126 9.48539C23.2219 10.4947 23.2219 12.1312 22.2126 13.1406L14.2291 21.1241L12.8149 19.7099L20.7984 11.7264C21.0267 11.4981 21.0267 11.1279 20.7984 10.8996L22.2126 9.48539ZM13.522 20.417L4.41797 11.313L13.522 20.417ZM14.2291 1.50188L22.2126 9.48539C23.2219 10.4947 23.2219 12.1312 22.2126 13.1406L20.7984 11.7264C21.0267 11.4981 21.0267 11.1279 20.7984 10.8996L12.8149 2.9161L14.2291 1.50188Z"
-                                                                  fill="white" mask="url(#path-1-inside-1_32_2201)"/>
-                                                            <path d="M0 11.313H15.2028" stroke="white"/>
-                                                        </svg>
-                                                    </a>
+                                                    <div class="flex 2xl:flex-col mobile:flex-row flex-col justify-between gap-[7px] 2xl:items-end mobile:items-center items-start 2xl:w-max w-full 2xl:flex-nowrap flex-wrap">
+                                                        <div class="3xl:text-[45px]/[100%] 2xl:text-[40px]/[100%] mobile:text-[30px]/[100%] text-[17px]/[100%] font-medium lowercase text-primary text-nowrap"
+                                                             itemprop="offers" itemscope
+                                                             itemtype="https://schema.org/Offer">
+                                                            <span itemprop="price"><?php echo $service['price']; ?><?php echo $service['currency']; ?></span>
+                                                            <meta itemprop="priceCurrency"
+                                                                  content="<?php echo $service['currency']; ?>">
+                                                        </div>
+                                                        <a class="service-btn text-white!" rel="noopener noreferrer"
+                                                           target="_blank"
+                                                           href="<?php echo esc_url($book_page['url']); ?>">
+                                                            <?php echo esc_html($book_page['title']); ?>
+                                                            <svg aria-hidden="true" class="mobile:w-auto w-[12px]"
+                                                                 width="23" height="23"
+                                                                 viewBox="0 0 23 23" fill="none"
+                                                                 xmlns="http://www.w3.org/2000/svg">
+                                                                <mask id="path-1-inside-1_32_2201" fill="white">
+                                                                    <path d="M5.53846 12.4335C4.91963 11.8147 4.91963 10.8113 5.53846 10.1925L13.522 2.20899L21.5055 10.1925C22.1243 10.8113 22.1243 11.8146 21.5055 12.4335L13.522 20.417L5.53846 12.4335Z"/>
+                                                                </mask>
+                                                                <path d="M4.41797 11.313L13.522 2.20899L4.41797 11.313ZM22.2126 9.48539C23.2219 10.4947 23.2219 12.1312 22.2126 13.1406L14.2291 21.1241L12.8149 19.7099L20.7984 11.7264C21.0267 11.4981 21.0267 11.1279 20.7984 10.8996L22.2126 9.48539ZM13.522 20.417L4.41797 11.313L13.522 20.417ZM14.2291 1.50188L22.2126 9.48539C23.2219 10.4947 23.2219 12.1312 22.2126 13.1406L20.7984 11.7264C21.0267 11.4981 21.0267 11.1279 20.7984 10.8996L12.8149 2.9161L14.2291 1.50188Z"
+                                                                      fill="white" mask="url(#path-1-inside-1_32_2201)"/>
+                                                                <path d="M0 11.313H15.2028" stroke="white"/>
+                                                            </svg>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </article>
+                                        </article>
+                                    <?php endforeach; ?>
                                 <?php endforeach; ?>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
-                    <div class="xl:flex hidden flex-col gap-5 items-center h-full py-5">
+                    <div class="xl:flex hidden flex-col gap-5 items-center h-auto py-5">
                         <span class="h-full bg-primary w-[1px]"></span>
                         <div class="flex gap-5 flex-col items-center">
                             <button
@@ -327,7 +329,7 @@ get_header();
             </section>
         <?php endif; ?>
 
-        <?php if ($products_block):
+        <?php if (false):
             $supertitle = $products_block['supertitle'];
             $title = $products_block['title'];
             $subtitle = $products_block['subtitle'];

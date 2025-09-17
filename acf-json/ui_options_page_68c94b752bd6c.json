@@ -1,0 +1,26 @@
+{
+    "key": "ui_options_page_68c94b752bd6c",
+    "title": "Footer settings",
+    "active": true,
+    "menu_order": 0,
+    "page_title": "Footer settings",
+    "menu_slug": "footer",
+    "parent_slug": "none",
+    "advanced_configuration": 1,
+    "icon_url": "",
+    "menu_title": "Footer",
+    "position": 20,
+    "redirect": 0,
+    "description": "",
+    "menu_icon": {
+        "type": "dashicons",
+        "value": "dashicons-table-row-after"
+    },
+    "update_button": "Обновить",
+    "updated_message": "Настройки были обновлены",
+    "capability": "edit_posts",
+    "data_storage": "options",
+    "post_id": "",
+    "autoload": 0,
+    "modified": 1758023582872
+}

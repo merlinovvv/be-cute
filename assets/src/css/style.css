@@ -6,6 +6,16 @@
     --breakpoint-3xl: 107.5rem;
     --breakpoint-mobile: 470px;
 
+    --text-45to20: calc(20px + (45 - 20) * ((100vw - 320px)/(1920 - 320)));
+    --text-45to15: calc(15px + (45 - 15) * ((100vw - 320px)/(1920 - 320)));
+    --text-25to12: calc(12px + (25 - 12) * ((100vw - 320px)/(1920 - 320)));
+    --text-20to10: calc(10px + (20 - 10) * ((100vw - 320px)/(1920 - 320)));
+    --text-20to12: calc(12px + (20 - 12) * ((100vw - 320px)/(1920 - 320)));
+    --text-15to12: calc(12px + (15 - 12) * ((100vw - 320px)/(1920 - 320)));
+
+    --width-583to290: calc(290px + (583 - 290) * ((100vw - 320px)/(1920 - 320)));
+
+
     --color-primary: #E492A1;
     --color-secondary: #EACFD4;
     --color-background: #2A2A2A;
@@ -30,12 +40,13 @@
     }
 
     h1 {
-        @apply lg:text-[25px] text-lg lowercase text-secondary;
+        font-family: 'Cormorant', sans-serif;
     }
 
     h2 {
         font-family: 'Cormorant', sans-serif;
-        @apply uppercase text-white md:text-[10.67vw]/[85%] text-[67px]/[85%] lg:tracking-[-19px] md:tracking-[-12px] tracking-[-6px]
+        font-size: calc(67px + (205 - 67) * ((100vw - 320px)/(1920 - 320)));
+        @apply uppercase text-white leading-[85%] tracking-[-0.08em]
     }
 
     h3 {
@@ -48,6 +59,16 @@
         padding: 0 40px;
         margin: 0 auto;
         max-width: 100%;
+    }
+
+    .title-no-wrap{
+        font-family: 'Cormorant', sans-serif;
+        @apply text-white uppercase tracking-[-0.08em] leading-none;
+    }
+
+    .head-text > span {
+        width: 100%;
+        text-align: center;
     }
 
     .menu-link {
@@ -223,6 +244,10 @@
     }
 }
 
+.how-work-list ul{
+    @apply list-disc md:space-y-[15px] space-y-[7.5px] md:pl-[31px] pl-[15px];
+}
+
 .menu-burger-btn{
     display: none;
 }
@@ -321,6 +346,10 @@
 
 .header-menu-social{
     display: none;
+}
+
+.menu-item.menu-item-type-post_type.current_page_item{
+    color: #fff;
 }
 
 @media (max-width: 1280px) {
@@ -723,7 +752,7 @@
     }
 }
 
-.reviews-swiper-pagination {
+.custom-swiper-pagination {
     width: max-content !important;
 
     .swiper-pagination-bullet {

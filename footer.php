@@ -9,7 +9,7 @@
  * @package becute
  */
 
-$footer = get_field('footer');
+$footer = get_field('footer', 'option');
 
 if ($footer):
     $socials_title = $footer['socials_title'];

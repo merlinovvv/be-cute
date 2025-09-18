@@ -192,7 +192,7 @@ if ($levels_card_block && $levels_card_block['levels_block']) {
                             <h2 class="text-primary"><?php echo esc_html($title_card_block); ?></h2>
                         </div>
                         <p class="lowercase text-15to12 text-dark-gray">
-                            You can do it in <b><?php echo count($steps) ?> ways:</b>
+                            <?php pll_e('You can do it in') ?><b> <?php echo count($steps) ?> <?php pll_e('ways') ?>:</b>
                         </p>
                         <div class="flex sm:flex-row flex-col sm:items-start items-center justify-between gap-[18px]">
                             <div class="flex flex-col sm:gap-[50px] gap-[30px]">

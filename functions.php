@@ -9,7 +9,7 @@
 
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.2');
+    define('_S_VERSION', '1.0.4');
 }
 
 /**
@@ -109,6 +109,44 @@ function becute_acf_json_save_point( $path ) {
     return get_stylesheet_directory() . '/acf-json';
 }
 add_filter( 'acf/settings/save_json', 'becute_acf_json_save_point' );
+
+add_action('init', 'becute_t' );
+
+function becute_t() {
+
+    if( ! function_exists( 'pll_register_string' ) ) {
+        return;
+    }
+
+    pll_register_string(
+        'becute_t_cashback-from', // название строки
+        'cashback from', // сама строка
+        'Loyalty', // категория для удобства
+        false // будут ли тут переносы строк в тексте или нет
+    );
+
+    pll_register_string(
+        'becute_t_cashback-to',
+        'to',
+        'Loyalty',
+        false
+    );
+
+    pll_register_string(
+        'becute_t_steps-can',
+        'You can do it in',
+        'Loyalty',
+        false
+    );
+
+    pll_register_string(
+        'becute_t_ways',
+        'ways',
+        'Loyalty',
+        false
+    );
+
+}
 
 /**
  * Получаем переключатель языков

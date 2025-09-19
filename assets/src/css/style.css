@@ -107,7 +107,7 @@
         background: #fff;
         width: var(--default-btn-size);
         height: var(--default-btn-size);
-        font-size: 25px;
+        font-size: var(--text-25to12);
         line-height: normal;
         font-weight: 600;
         text-align: center;
@@ -189,7 +189,7 @@
         &.mini {
             padding: 25px;
             background: transparent;
-            font-size: 20px;
+            font-size: var(--text-20to12);
             color: #fff;
             width: var(--mini-btn-size);
             height: var(--mini-btn-size);
@@ -217,7 +217,7 @@
         &.mini-gray {
             padding: 25px;
             background: transparent;
-            font-size: 20px;
+            font-size: var(--text-20to12);
             color: var(--color-dark-gray);
             width: var(--mini-btn-size);
             height: var(--mini-btn-size);
@@ -261,7 +261,7 @@
 }
 
 .small-text {
-    @apply lowercase text-dark-gray md:text-[15px]/[125%] text-[12px]/[125%] tracking-[0%]
+    @apply lowercase text-dark-gray text-15to12/[1.3] tracking-[0%]
 }
 
 .service-btn {
@@ -282,7 +282,7 @@
 }
 
 .service-type-btn {
-    @apply lowercase rounded-full bg-white 3xl:w-[250px] 3xl:h-[250px] 2xl:w-[210px] 2xl:h-[210px] md:w-[180px] md:h-[180px] mobile:w-[120px] mobile:h-[120px] w-[87.41px] h-[87.41px] 2xl:border-[10px] mobile:border-[7px] border-[3.78px] border-secondary text-center 3xl:text-[25px] md:text-[20px] mobile:text-[15px] text-[12px] font-semibold hover:bg-white/60 transition duration-200 cursor-pointer;
+    @apply lowercase rounded-full bg-white 3xl:w-[250px] 3xl:h-[250px] 2xl:w-[210px] 2xl:h-[210px] md:w-[180px] md:h-[180px] mobile:w-[120px] mobile:h-[120px] w-[87.41px] h-[87.41px] 2xl:border-[10px] mobile:border-[7px] border-[3.78px] border-secondary text-center text-25to12 font-semibold hover:bg-white/60 transition duration-200 cursor-pointer;
 }
 
 .service-type-btn {
@@ -352,7 +352,7 @@
     color: #fff;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1279px) {
     .gallery-slide {
         height: 780px !important;
         display: grid !important;
@@ -383,8 +383,6 @@
     }
 
     .btn {
-        font-size: 20px;
-
         .arrow {
             width: 22px;
             height: 22px;
@@ -397,7 +395,6 @@
 
         &.mini {
             padding: 16px;
-            font-size: 16px;
 
             .arrow {
                 width: 14px;
@@ -412,7 +409,6 @@
 
         &.mini-gray{
             padding: 16px;
-            font-size: 16px;
 
             .arrow {
                 width: 14px;
@@ -430,8 +426,6 @@
 @media (max-width: 1024px) {
 
     .btn {
-        font-size: 18px;
-
         .arrow {
             width: 16px;
             height: 16px;
@@ -445,7 +439,6 @@
         }
 
         &.mini {
-            font-size: 14px;
             padding: 16px;
 
             .arrow {
@@ -467,7 +460,6 @@
 
         &.mini-gray{
             padding: 16px;
-            font-size: 14px;
 
             .arrow {
                 width: 14px;
@@ -524,7 +516,6 @@
     }
 
     .btn {
-        font-size: 12px;
 
         &:before {
             width: calc(var(--default-btn-size) + 2.5px + 2.5px);
@@ -544,7 +535,6 @@
         }
 
         &.mini {
-            font-size: 12px;
             padding: 0 10px;
 
             &:before {
@@ -565,7 +555,6 @@
         }
 
         &.mini-gray{
-            font-size: 12px;
             padding: 0 10px;
 
             &:before {

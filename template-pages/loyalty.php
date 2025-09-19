@@ -63,7 +63,7 @@ if ($levels_card_block && $levels_card_block['levels_block']) {
                     <h1 class="title-no-wrap w-min md:pt-0 pt-3">
                         <?php echo esc_html($title); ?>
                     </h1>
-                    <p class="text-white text-25to12 absolute md:bottom-3 -bottom-3 left-1/2 -translate-x-1/2"><?php echo esc_html($subtitle); ?></p>
+                    <p class="text-white text-25to12 absolute md:bottom-0 -bottom-3 left-1/2 -translate-x-1/2"><?php echo esc_html($subtitle); ?></p>
                 </div>
                 <div class="flex flex-col md:gap-[28px] gap-5 w-(--width-583to290) xl:absolute xl:mx-0 mx-auto xl:mt-0 mt-10 static bottom-0 right-[14.84%]">
                     <p class="text-45to20/[1.27] tracking-[-0.02em] font-medium text-white"><?php echo esc_html($img_desc); ?></p>
@@ -72,7 +72,7 @@ if ($levels_card_block && $levels_card_block['levels_block']) {
                          alt="<?php echo esc_attr($img_image['alt'] || 'Loyalty card'); ?>">
                 </div>
                 <div class="flex md:flex-row flex-col md:items-start items-center gap-5 xl:max-w-[43.54vw] max-w-full w-full xl:mx-0 mx-auto justify-between xl:my-[125px] mt-10 xl:bg-transparent bg-[#333333] xl:rounded-0 md:rounded-t-[25px] rounded-t-[12px] xl:p-0 md:py-[50px] pt-5 md:px-[40px] px-2.5">
-                    <div class="flex flex-col md:items-start items-center md:gap-[27px] gap-2.5 md:max-w-[363px] md:text-start text-center">
+                    <div class="flex flex-col md:items-start items-center md:gap-[27px] gap-2.5 2xl:max-w-[363px] md:max-w-[300px] md:text-start text-center">
                         <div class="text-secondary text-45to20 font-medium">
                             <?php echo esc_html($slp_title); ?>
                         </div>
@@ -97,7 +97,7 @@ if ($levels_card_block && $levels_card_block['levels_block']) {
                         </div>
                     </div>
                     <div class="md:flex hidden flex-col items-center gap-2.5 text-center text-white text-20to10">
-                        <div>scroll<br>down</div>
+                        <div><?php pll_e('scroll<br>down'); ?></div>
                         <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <mask id="path-1-inside-1_378_167" fill="white">
                                 <path d="M14.9313 8.07748C15.7977 7.21111 17.2023 7.21112 18.0687 8.07748L29.2456 19.2544L18.0687 30.4313C17.2023 31.2977 15.7977 31.2977 14.9313 30.4313L3.7544 19.2544L14.9313 8.07748Z"/>

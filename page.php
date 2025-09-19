@@ -420,8 +420,8 @@ get_header();
             <section id="clients-say" class="bg-secondary md:py-[60px] py-[20px]">
                 <div class="container">
                     <div class="flex justify-between">
-                        <div class="flex xl:flex-row flex-col justify-between w-full">
-                            <article class="flex xl:items-end flex-col text-primary w-max">
+                        <div class="flex 2xl:flex-row flex-col justify-between w-full">
+                            <article class="flex 2xl:items-end flex-col text-primary w-max">
                                 <h2 class="text-primary"><?php echo $title; ?></h2>
                                 <?php if ($subtitle) : ?>
                                     <span class="md:text-[25px] text-[12px] text-end"><?php echo $subtitle ?></span>
@@ -429,13 +429,13 @@ get_header();
                             </article>
                             <?php if ($text) : ?>
                                 <article
-                                        class="h-auto small-text xl:mt-[60px] md:space-y-[40px] space-y-[11px] xl:max-w-[243px] lg:max-w-max max-w-[215px]">
+                                        class="h-auto small-text 2xl:mt-[60px] md:space-y-[40px] space-y-[11px] 2xl:max-w-[243px] lg:max-w-max max-w-[215px]">
                                     <?php echo $text; ?>
                                 </article>
                             <?php endif; ?>
                         </div>
 
-                        <div class="relative md:flex xl:items-end hidden">
+                        <div class="relative md:flex 2xl:items-end hidden">
                             <?php if (!empty($block_link)) : ?>
                                 <a class="btn mini-gray mr-[-25px]" href="<?php echo esc_url($block_link['url']); ?>">
                                     <?php echo esc_html($block_link['title']); ?>

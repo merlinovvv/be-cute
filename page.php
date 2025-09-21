@@ -215,7 +215,7 @@ get_header();
                         </div>
                         <span class="h-full bg-primary w-[1px]"></span>
                     </div>
-                    <div class="h-full uppercase flex flex-col justify-between xl:items-end items-center xl:w-full md:w-max md:gap-10 gap-5 md:py-[60px] py-5">
+                    <div class="h-full uppercase flex flex-col justify-between xl:items-end items-center xl:w-full md:gap-10 gap-5 md:py-[60px] py-5">
                         <div class="relative flex justify-between w-full flex-col gap-5 md:pl-10">
                             <h2 class="text-primary!">
                                 <?php echo $title; ?>
@@ -228,9 +228,7 @@ get_header();
                             <nav aria-label="Services categories"
                                  class="grid-cols-3 grid 2xl:gap-[44px] gap-5 md:justify-items-center md:justify-end md:items-end xl:ml-auto md:mx-auto">
                                 <?php foreach ($services_types as $service_type) : ?>
-                                    <button data-book-link="<?php echo esc_attr(json_encode($book_page)); ?>"
-                                            data-services='<?php echo esc_attr(json_encode($service_type["services"])); ?>'
-                                            data-service-type="<?php echo esc_attr($service_type['type']); ?>"
+                                    <button data-service-type="<?php echo esc_attr($service_type['type']); ?>"
                                             class="service-type-btn">
                                         <?php echo esc_html($service_type['type']); ?>
                                     </button>

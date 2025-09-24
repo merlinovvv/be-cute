@@ -46,7 +46,7 @@ $tel_icon = '<svg aria-hidden="true" width="12" height="13" viewBox="0 0 12 13" 
 </head>
 
 <body id="body" style="background-image: url('<?php echo esc_url($bg) ?>')" <?php body_class('bg-no-repeat sm:bg-right-top bg-[60%_top] sm:bg-auto bg-size-[239%]'); ?>>
-<header class="md:mt-[37px] mt-[6px] relative z-20">
+<header class="lg:mt-[37px] mt-[6px] relative z-20">
     <div class="container">
         <div class="flex items-center justify-between relative">
             <div class="header-logo order-1">
@@ -58,28 +58,28 @@ $tel_icon = '<svg aria-hidden="true" width="12" height="13" viewBox="0 0 12 13" 
                 <span class="sr-only">Открыть меню</span>
                 <span></span>
             </button>
-            <nav aria-label="Primary" class="menu-header md:order-2 z-10">
-                <span class="md:hidden block absolute top-[15px] left-[14px] menu-title">menu</span>
-                <div class="bg-black h-[1px] w-full mt-[25px] mb-[5px] md:hidden"></div>
+            <nav aria-label="Primary" class="menu-header lg:order-2 z-10">
+                <span class="lg:hidden block absolute top-[15px] left-[14px] menu-title">menu</span>
+                <div class="bg-black h-[1px] w-full mt-[25px] mb-[5px] lg:hidden"></div>
                 <?php
                 wp_nav_menu([
                     'theme_location' => 'menu-1',
                     'menu_id' => 'primary-menu',
                     'container' => false,
                     // Tailwind-классы на <ul>
-                    'menu_class' => 'menu-list flex items-center md:gap-[31px] gap-[7px]',
+                    'menu_class' => 'menu-list flex items-center lg:gap-[31px] gap-[7px]',
                     // Жёстко задаём разметку UL, чтобы WP не подмешивал контейнер
                     'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                 ]);
                 ?>
                 <?php if (!empty($contacts)) : ?>
                     <address class="not-italic w-full header-menu-social">
-                        <p class="lg:text-[25px] md:text-[18px] text-[12px] lowercase text-black lg:mb-[17px] md:mb-[14px] mb-[4px]">
+                        <p class="lg:text-[25px] lg:text-[18px] text-[12px] lowercase text-black lg:mb-[17px] lg:mb-[14px] mb-[4px]">
                             <?php echo esc_html($contacts_title); ?>
                         </p>
                         <?php foreach ($contacts as $contact): ?>
-                            <div class="border-t-black border-t pt-[5px] md:pb-[17px] pb-[5px]">
-                                <p class="flex items-center gap-[3.5px] md:text-[15px] text-[12px] text-black font-light leading-[normal]">
+                            <div class="border-t-black border-t pt-[5px] lg:pb-[17px] pb-[5px]">
+                                <p class="flex items-center gap-[3.5px] lg:text-[15px] text-[12px] text-black font-light leading-[normal]">
                                     <?php
                                     if (str_contains($contact['link']['url'], 'mailto:')) {
                                         echo $mail_icon;
@@ -92,11 +92,11 @@ $tel_icon = '<svg aria-hidden="true" width="12" height="13" viewBox="0 0 12 13" 
                                 <?php if (str_contains($contact['link']['url'], 'tel:')): ?>
                                     <div itemprop="contactPoint" itemscope itemtype="https://schema.org/ContactPoint">
                                         <meta itemprop="contactType" content="customer service" />
-                                        <a itemprop="telephone" class="md:text-[17px]/[normal] text-[12px]/[normal] text-[#2A2A2A]"
+                                        <a itemprop="telephone" class="lg:text-[17px]/[normal] text-[12px]/[normal] text-[#2A2A2A]"
                                            href="<?php echo esc_url($contact['link']['url']); ?>"><?php echo esc_html($contact['link']['title']); ?></a>
                                     </div>
                                 <?php else: ?>
-                                    <a class="md:text-[17px]/[normal] text-[12px]/[normal] text-[#2A2A2A]"
+                                    <a class="lg:text-[17px]/[normal] text-[12px]/[normal] text-[#2A2A2A]"
                                        href="<?php echo esc_url($contact['link']['url']); ?>"><?php echo esc_html($contact['link']['title']); ?></a>
                                 <?php endif; ?>
                             </div>

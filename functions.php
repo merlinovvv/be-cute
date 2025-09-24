@@ -9,7 +9,7 @@
 
 if (!defined('_S_VERSION')) {
     // Replace the version number of the theme on each release.
-    define('_S_VERSION', '1.0.6');
+    define('_S_VERSION', '1.0.7');
 }
 
 /**
@@ -196,11 +196,11 @@ function becute_get_language_switcher()
 
         ?>
         <nav aria-label="Language"
-             class="menu-langs flex items-center gap-[31px] md:order-3 md:static absolute right-[calc(34px+10px)] md:bg-transparent bg-secondary rounded-full py-[7px] px-[9px]">
+             class="menu-langs flex items-center gap-[31px] lg:order-3 lg:static absolute right-[calc(34px+10px)] lg:bg-transparent bg-secondary rounded-full py-[7px] px-[9px]">
             <?php foreach ($lang_array as $code => $lang) : ?>
                 <?php if ($lang['current_lang'] == '1'): ?>
                     <p lang="<?php echo $lang['name']; ?>"
-                       class="menu-link uppercase trigger md:text-white! text-[#2A2A2A]!"
+                       class="menu-link uppercase trigger lg:text-white! text-[#2A2A2A]!"
                     >
                         <?php echo $lang['name']; ?>
                     </p>
